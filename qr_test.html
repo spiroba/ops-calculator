@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Тест QR-кода</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1928DC 0%, #86BBFF 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(25, 40, 220, 0.2);
+            max-width: 500px;
+        }
+        
+        h1 {
+            color: #1928DC;
+            margin-bottom: 20px;
+        }
+        
+        .qr-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .test-url {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .instructions {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Тест QR-кода</h1>
+        
+        <div class="qr-container">
+            <div style="font-weight: 600; margin-bottom: 15px;">📱 QR-код для тестирования:</div>
+            <div id="qrcode"></div>
+        </div>
+        
+        <div class="test-url">
+            <strong>URL для ручной проверки:</strong><br>
+            <span id="testUrl">http://10.190.118.32:8080/калькулятор_премий_опс.html</span>
+        </div>
+        
+        <div class="instructions">
+            <strong>🔍 Как тестировать:</strong><br>
+            1. <strong>Отсканируй QR-код</strong> камерой смартфона<br>
+            2. <strong>Если не работает</strong> - скопируй URL выше и открой в мобильном браузере<br>
+            3. <strong>Проверь Wi-Fi</strong> - смартфон должен быть в той же сети что и Mac<br>
+            4. <strong>Если всё работает</strong> - увидишь мобильную версию калькулятора
+        </div>
+        
+        <div style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 10px; font-size: 14px;">
+            ✅ <strong>Если увидишь калькулятор на смартфоне</strong> - QR-код работает правильно!<br>
+            ❌ <strong>Если ошибка соединения</strong> - проблема с сетью или Firewall
+        </div>
+    </div>
+
+    <script>
+        // Генерируем QR-код для тестирования
+        const testUrl = 'http://10.190.118.32:8080/калькулятор_премий_опс.html';
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(testUrl)}&ecc=M`;
+        
+        document.getElementById('qrcode').innerHTML = `
+            <img src="${qrApiUrl}" alt="QR Code" style="max-width: 200px; border: 2px solid #1928DC; border-radius: 10px;">
+        `;
+        
+        document.getElementById('testUrl').textContent = testUrl;
+        
+        console.log('🔧 Тест QR-код сгенерирован для:', testUrl);
+    </script>
+</body>
+</html> 
