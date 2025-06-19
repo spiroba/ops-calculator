@@ -18,8 +18,8 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background: linear-gradient(135deg, #1928DC 0%, #86BBFF 100%);
             min-height: 100vh;
-            padding: 10px;
-            padding-top: 20px;
+            padding: 5px;
+            padding-top: 85px; /* Отступ для фиксированной карточки */
             font-size: 16px; /* Базовый размер для мобильных */
         }
 
@@ -334,72 +334,7 @@
             box-shadow: 0 6px 20px rgba(40, 53, 147, 0.4);
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            overflow: auto;
-        }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10px auto;
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 95%;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* Адаптивные стили для модального окна */
-        @media (max-width: 480px) {
-            .modal-content {
-                margin: 5px;
-                padding: 15px;
-                max-width: 98%;
-                max-height: 95vh;
-                border-radius: 10px;
-            }
-            
-            .help-title {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
-            }
-            
-            .help-section h3 {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: sticky;
-            top: 0;
-            right: 0;
-            background: white;
-            padding: 5px 10px;
-            border-radius: 50%;
-            z-index: 1001;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #1928DC;
-            text-decoration: none;
-        }
 
         /* Touch стили для лучшего взаимодействия */
         .position-option,
@@ -437,74 +372,7 @@
             transform: scale(0.97);
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .help-title {
-            color: #1928DC;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #1928DC;
-            padding-bottom: 10px;
-        }
-
-        .help-section {
-            margin-bottom: 25px;
-        }
-
-        .help-section h3 {
-            color: #1928DC;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* Адаптивные карточки в справочной информации */
-        .help-section div[style*="display: flex"] {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 10px !important;
-        }
-
-        .help-section div[style*="flex: 1"] {
-            flex: 1 1 250px !important;
-            min-width: 200px !important;
-        }
-
-        .help-section div[style*="grid"] {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-            gap: 12px !important;
-        }
-
-        /* Мобильная адаптация для карточек */
-        @media (max-width: 480px) {
-            .help-section div[style*="flex: 1"] {
-                flex: 1 1 100% !important;
-                min-width: 100% !important;
-            }
-            
-            .help-section div[style*="grid"] {
-                grid-template-columns: 1fr !important;
-            }
-            
-            .help-section p {
-                font-size: 0.9rem !important;
-                line-height: 1.4 !important;
-            }
-        }
 
         .positions-table {
             width: 100%;
@@ -635,85 +503,47 @@
             opacity: 1;
         }
 
-        .formula-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.8rem;
-        }
 
-        .formula-table th,
-        .formula-table td {
-            border: 1px solid #e2e8f0;
-            padding: 6px;
-            text-align: center;
-        }
-
-        .formula-table th {
-            background: rgba(134, 187, 255, 0.2);
-            font-weight: 600;
-            color: #1928DC;
-        }
-
-        .fixed-summary {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(26, 35, 126, 0.3);
-            z-index: 1000;
-            min-width: 224px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .summary-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            opacity: 0.9;
-        }
-
-        .summary-amount {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
 
         /* Фиксированная карточка с итоговой премией */
         .fixed-summary {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            left: 10px;
+            top: 5px;
+            right: 5px;
+            left: 5px;
             background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
             color: white;
-            padding: 12px 16px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 14px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
             z-index: 1000;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             min-width: auto;
             text-align: center;
             font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-summary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
         .summary-title {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
         }
 
         .summary-amount {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.5px;
         }
 
         /* Стили для кнопки пересчета */
@@ -761,12 +591,13 @@
         /* АДАПТИВНЫЕ СТИЛИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
         @media (max-width: 768px) {
             body {
-                padding: 5px;
-                padding-top: 80px; /* Отступ для фиксированной карточки */
+                padding: 0px;
+                padding-top: 85px; /* Отступ для фиксированной карточки */
             }
             
             .header {
-                padding: 16px;
+                padding: 12px 8px;
+                margin-bottom: 8px;
             }
             
             .header h1 {
@@ -779,12 +610,12 @@
             }
             
             .main-content {
-                padding: 16px;
-                gap: 16px;
+                padding: 8px 5px;
+                gap: 12px;
             }
             
             .section {
-                padding: 16px;
+                padding: 12px 8px;
             }
             
             .section-title {
@@ -840,7 +671,7 @@
             }
             
             .results {
-                padding: 16px;
+                padding: 12px 8px;
                 min-height: 200px;
             }
             
@@ -980,7 +811,7 @@
             <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px; font-style: italic;">
                 * Расчет носит информационный характер и может отличаться от фактической премии
             </p>
-            <button class="help-btn" onclick="openHelpModal()">📖 Справочная информация</button>
+            
         </div>
         
 
@@ -1062,172 +893,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 
 
-    <!-- Модальное окно справки -->
-    <div id="helpModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeHelpModal()">&times;</span>
-            
-            <h2 class="help-title">📖 Справочная информация по калькулятору премий ОПС</h2>
-            
-            <div class="help-section">
-                <h3>💰 Твой доход в твоих руках</h3>
-                <p style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 20px;"><strong>3 простых шага к увеличению премии:</strong></p>
-                <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 200px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin: 0 0 8px 0; color: #1928DC;">1️⃣ Выполняй операции</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #4a5568;">Продавай товары и услуги, принимай и вручай РПО</p>
-                    </div>
-                    <div style="flex: 1; min-width: 200px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin: 0 0 8px 0; color: #1928DC;">2️⃣ Качество сервиса</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #4a5568;">Увеличивай скорость работы и CSI показатели</p>
-                    </div>
-                    <div style="flex: 1; min-width: 200px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin: 0 0 8px 0; color: #1928DC;">3️⃣ Выполняй план</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #4a5568;">Для НОПС и Администраторов: план выручки от 80%</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="help-section">
-                <h3>🎯 Как работает система премирования</h3>
-                <div style="background: #f8f9fa; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
-                    <h4 style="margin: 0 0 10px 0; color: #1928DC;">💰 Расчет КПИ с весами показателей</h4>
-                    <p style="margin: 0; color: #4a5568;">
-                        <strong>Формула:</strong> КПИ = (базовая_сумма × вес_показателя) × коэффициент_КПИ<br>
-                        <strong>Базовая сумма:</strong> 20% от реального оклада (оклад × ставка)<br>
-                        <strong>Веса КПИ:</strong><br>
-                        • Администратор: Выручка 30%, CSI 40%, Онлайн-РПО 30%<br>
-                        • НОПС: Выручка 30%, CSI 40%, Онлайн-РПО 15%, CO1/CO2 15%<br>
-                        <strong>Пример:</strong> Оклад 40,000₽, ставка 1.0, выручка 105% (к=1.12):<br>
-                        Базовая сумма = 40,000₽ × 1.0 × 20% = 8,000₽<br>
-                        КПИ Выручка = 8,000₽ × 30% × 1.12 = 2,688₽
-                    </p>
-                </div>
-                <div style="background: #f8f9fa; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 3px solid #1928DC;">
-                    <h4 style="margin: 0 0 10px 0; color: #1928DC;">🚨 ВАЖНО! Личные бонусы всегда выплачиваются</h4>
-                    <p style="margin: 0; color: #4a5568;">В отличие от КПИ, которые могут обнуляться при низкой выручке, личные бонусы за операции выплачиваются всегда!</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin: 0 0 8px 0; color: #1928DC;">👤 Операторы и Почтальоны</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #4a5568;">Личные бонусы × командные коэффициенты × эффективность ОПС</p>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin: 0 0 8px 0; color: #1928DC;">👥 НОПС и Администраторы</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #4a5568;">Личные бонусы + КПИ система (при выручке ≥80%)</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="help-section">
-                <h3>👥 Распределение операций по должностям</h3>
-                <div class="table-wrapper">
-                <table class="positions-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 40px;">ID</th>
-                            <th style="width: 200px;">Наименование операции</th>
-                            <th style="width: 80px;">Ставка</th>
-                            <th style="width: 50px;">Тип</th>
-                            <th style="width: 80px;">Оператор</th>
-                            <th style="width: 80px;">НОПС без оп.</th>
-                            <th style="width: 80px;">НОПС с оп.</th>
-                            <th style="width: 80px;">Админ</th>
-                            <th style="width: 80px;">Почтальон</th>
-                            <th style="width: 80px;">Гл.специалист</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Розница (товары)</td>
-                            <td>3%</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Розница 16 ДП</td>
-                            <td>5%</td>
-                            <td>2</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Лотерейные билеты</td>
-                            <td>3%</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Подписка</td>
-                            <td>2%</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Сим-карта тип 1</td>
-                            <td>50₽/шт</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Сим-карта тип 2</td>
-                            <td>30₽/шт</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Сим-карта тип 3</td>
-                            <td>10₽/шт</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
+
+
+
+
+
+
                         <tr>
                             <td>8</td>
                             <td>Доставка гиперлока</td>
@@ -1239,30 +915,10 @@
                             <td>❌</td>
                             <td>✅</td>
                             <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Платеж с МПКТ</td>
-                            <td>3₽/шт</td>
-                            <td>2</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
+
                         <tr>
                             <td>10</td>
-                            <td>Мультиподпись</td>
-                            <td>30₽/шт</td>
-                            <td>2</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
+
                         </tr>
                         <tr>
                             <td>11</td>
@@ -1858,18 +1514,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Особенности -->
-                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%); border-left: 4px solid #3b82f6; padding: 10px; border-radius: 0 12px 12px 0; backdrop-filter: blur(8px); border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
-                        <h6 style="margin: 0 0 6px 0; color: #1d4ed8; font-size: 0.85rem; font-weight: 600;">💡 НЕ обнуляются</h6>
-                        <p style="margin: 0; font-size: 0.75rem; color: #4a5568; line-height: 1.3;">
-                            В отличие от КПИ, банковские бонусы НЕ зависят от выручки ОПС (даже при < 80%)
-                        </p>
-                    </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -3080,22 +2726,7 @@
             summaryAmount.textContent = formatMoney(totalPremium);
         }
 
-        // Функции для модального окна справки
-        function openHelpModal() {
-            document.getElementById('helpModal').style.display = 'block';
-        }
 
-        function closeHelpModal() {
-            document.getElementById('helpModal').style.display = 'none';
-        }
-
-        // Закрытие модального окна при клике вне его области
-        window.onclick = function(event) {
-            const modal = document.getElementById('helpModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
     </script>
 </body>
 </html> 
