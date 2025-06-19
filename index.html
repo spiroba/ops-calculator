@@ -75,7 +75,171 @@
             .help-btn {
                 display: none !important;
             }
-        }
+            
+            /* Мобильная адаптация */
+            body {
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .header h1 {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 15px;
+                display: block; /* Убираем grid на мобильных */
+                gap: 0;
+            }
+            
+            .left-panel, .right-panel {
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .section {
+                padding: 20px 15px;
+                border-radius: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+            
+            /* Адаптация КПИ показателей */
+            .position-selector {
+                grid-template-columns: 1fr; /* Одна колонка на мобильных */
+                gap: 12px;
+            }
+            
+            .position-option {
+                padding: 15px;
+            }
+            
+            .position-icon {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+            
+            .position-name {
+                font-size: 0.9rem;
+            }
+            
+            /* Адаптация операций и КПИ */
+            .operations-grid, .kpi-grid {
+                grid-template-columns: 1fr; /* Одна колонка на мобильных */
+                gap: 12px;
+            }
+            
+            .operation-item, .kpi-item {
+                padding: 15px;
+                min-height: auto; /* Убираем фиксированную высоту */
+            }
+            
+            .operation-label, .kpi-label {
+                font-size: 1rem; /* Увеличиваем размер текста */
+                margin-bottom: 10px;
+            }
+            
+            .operation-rate {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+                min-height: auto;
+            }
+            
+            .operation-input, .kpi-input {
+                padding: 12px;
+                font-size: 1rem; /* Увеличиваем размер шрифта в полях */
+                border-radius: 8px;
+            }
+            
+            .kpi-inputs {
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .kpi-input {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            select.kpi-input {
+                padding-right: 35px;
+                background-size: 18px;
+            }
+            
+            /* Адаптация важных полей */
+            .salary-field, .position-field {
+                padding: 15px !important;
+                min-height: auto !important;
+            }
+            
+                         .pvz-wb-params input,
+             .pvz-wb-params select {
+                 padding: 12px;
+                 font-size: 1rem;
+             }
+             
+             /* Адаптация результатов */
+             .results {
+                 padding: 20px 15px !important;
+                 border-radius: 12px;
+             }
+             
+             .results-title {
+                 font-size: 1.1rem;
+                 margin-bottom: 15px;
+             }
+             
+             .recalc-button {
+                 padding: 8px 12px;
+                 font-size: 0.85rem;
+             }
+             
+             .recalc-icon {
+                 font-size: 0.8rem;
+             }
+             
+             /* Адаптация фиксированной области премии */
+             .fixed-summary {
+                 position: fixed;
+                 top: 10px;
+                 left: 10px;
+                 right: 10px;
+                 min-width: auto;
+                 padding: 15px;
+                 border-radius: 12px;
+                 text-align: center;
+                 backdrop-filter: blur(10px);
+                 box-shadow: 0 8px 32px rgba(26, 35, 126, 0.4);
+             }
+             
+             .summary-title {
+                 font-size: 1rem;
+                 margin-bottom: 8px;
+             }
+             
+             .summary-amount {
+                 font-size: 1.6rem;
+                 font-weight: 700;
+             }
+         }
 
 
 
@@ -2752,7 +2916,7 @@
             if (config.teamCoefficients) {
                 config.teamCoefficients.forEach(coeffId => {
                     const input = document.getElementById(`coeff_${coeffId}`);
-                    const coeff = TEAM_COEFFICIENTS_CONFIG[coeffId];
+                        const coeff = TEAM_COEFFICIENTS_CONFIG[coeffId];
                     
                     if (coeffId === 'service') {
                         // CSI в баллах
@@ -2760,11 +2924,11 @@
                         if (value > 0) {
                             const coefficient = calculateTeamCoefficient(value, 'service');
                             if (coefficient !== 1.0) {
-                                coefficientsDetails.push({
-                                    name: coeff.name,
-                                    value: value,
-                                    coefficient: coefficient
-                                });
+                        coefficientsDetails.push({
+                            name: coeff.name,
+                            value: value,
+                            coefficient: coefficient
+                        });
                             }
                         }
                     } else if (coeffId === 'speed_reception' || coeffId === 'speed_delivery') {
