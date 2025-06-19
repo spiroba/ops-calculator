@@ -348,14 +348,36 @@
 
         .modal-content {
             background-color: #fefefe;
-            margin: 10px;
+            margin: 10px auto;
             padding: 20px;
             border-radius: 15px;
             max-width: 95%;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Адаптивные стили для модального окна */
+        @media (max-width: 480px) {
+            .modal-content {
+                margin: 5px;
+                padding: 15px;
+                max-width: 98%;
+                max-height: 95vh;
+                border-radius: 10px;
+            }
+            
+            .help-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .help-section h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
         }
 
         .close {
@@ -449,29 +471,168 @@
             font-weight: 600;
         }
 
+        /* Адаптивные карточки в справочной информации */
+        .help-section div[style*="display: flex"] {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 10px !important;
+        }
+
+        .help-section div[style*="flex: 1"] {
+            flex: 1 1 250px !important;
+            min-width: 200px !important;
+        }
+
+        .help-section div[style*="grid"] {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: 12px !important;
+        }
+
+        /* Мобильная адаптация для карточек */
+        @media (max-width: 480px) {
+            .help-section div[style*="flex: 1"] {
+                flex: 1 1 100% !important;
+                min-width: 100% !important;
+            }
+            
+            .help-section div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .help-section p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+        }
+
         .positions-table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .positions-table th,
         .positions-table td {
             border: 1px solid #e2e8f0;
-            padding: 8px;
+            padding: 6px 4px;
+            text-align: center;
+            vertical-align: middle;
+            min-width: 50px;
+        }
+
+        .positions-table th:nth-child(1),
+        .positions-table td:nth-child(1) {
+            width: 35px;
+            min-width: 35px;
+        }
+
+        .positions-table th:nth-child(2),
+        .positions-table td:nth-child(2) {
+            width: 120px;
+            min-width: 120px;
             text-align: left;
-            vertical-align: top;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .positions-table th:nth-child(3),
+        .positions-table td:nth-child(3) {
+            width: 70px;
+            min-width: 70px;
+        }
+
+        .positions-table th:nth-child(4),
+        .positions-table td:nth-child(4) {
+            width: 40px;
+            min-width: 40px;
+        }
+
+        .positions-table th:nth-child(n+5),
+        .positions-table td:nth-child(n+5) {
+            width: 50px;
+            min-width: 50px;
         }
 
         .positions-table th {
             background: rgba(25, 40, 220, 0.1);
             font-weight: 600;
             color: #1928DC;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
         .positions-table tr:nth-child(even) {
             background: #f9f9f9;
+        }
+
+        /* Дополнительная адаптивность для очень маленьких экранов */
+        @media (max-width: 400px) {
+            .positions-table {
+                font-size: 0.7rem;
+            }
+            
+            .positions-table th,
+            .positions-table td {
+                padding: 4px 2px;
+            }
+            
+            .positions-table th:nth-child(2),
+            .positions-table td:nth-child(2) {
+                width: 100px;
+                min-width: 100px;
+            }
+        }
+
+        /* Улучшенная прокрутка для таблицы */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: #1928DC;
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #0f1a9e;
+        }
+
+        /* Добавим тень для указания прокрутки */
+        .table-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .table-wrapper:hover::after {
+            opacity: 1;
         }
 
         .formula-table {
@@ -963,6 +1124,7 @@
 
             <div class="help-section">
                 <h3>👥 Распределение операций по должностям</h3>
+                <div class="table-wrapper">
                 <table class="positions-table">
                     <thead>
                         <tr>
@@ -1281,6 +1443,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
                     <strong>Типы операций:</strong> 1 - без коэффициентов, 2 - ×CSI, 3 - ×Скорость приема, 4 - ×Скорость вручения
                 </p>
@@ -1631,6 +1794,74 @@
                             <li>Выручка ОПС 110% увеличила итоговую премию в 1,3 раза</li>
                             <li>Разнообразие операций увеличило премию с 8,209₽ до 12,792₽ (+55%)</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <h3>🏦 Агентские вознаграждения банка</h3>
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 2px solid #28a745; border-radius: 15px; padding: 20px; margin: 20px 0;">
+                    
+                    <!-- Общее описание -->
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(40, 167, 69, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3);">
+                        <h5 style="margin: 0 0 8px 0; color: #28a745; border-bottom: 2px solid #e9ecef; padding-bottom: 4px; font-size: 0.95rem;">📋 Общие принципы банковских вознаграждений:</h5>
+                        <ul style="margin: 6px 0; padding-left: 16px; color: #495057; font-size: 0.8rem; line-height: 1.3;">
+                            <li><strong>💪 НЕ обнуляются</strong> - В отличие от КПИ, банковские бонусы НЕ зависят от выручки ОПС (даже при < 80%)</li>
+                            <li><strong>🚫 Без коэффициентов</strong> - НЕ зависят от командных коэффициентов (CSI, скорость и др.)</li>
+                            <li><strong>➕ Простая формула</strong> - Количество × Тариф = Бонус банка</li>
+                            <li><strong>🎯 Стабильный доход</strong> - Всегда выплачиваются при продаже банковских продуктов</li>
+                        </ul>
+                    </div>
+
+                    <!-- Тарифы банковских продуктов -->
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(40, 167, 69, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3);">
+                        <h5 style="margin: 0 0 10px 0; color: #28a745; font-size: 0.95rem;">💰 Тарифы банковских продуктов:</h5>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px;">
+                            <!-- Кредитные продукты -->
+                            <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 99, 99, 0.05) 100%); padding: 8px; border-radius: 8px; border-left: 3px solid #ff6b6b; backdrop-filter: blur(8px); border: 1px solid rgba(255, 107, 107, 0.2); box-shadow: 0 2px 8px rgba(255, 107, 107, 0.15);">
+                                <h6 style="margin: 0 0 4px 0; color: #c92a2a; font-size: 0.8rem; font-weight: 600;">💳 Кредитные продукты</h6>
+                                <div style="font-size: 0.7rem; line-height: 1.2; color: #495057;">
+                                    • Потребительский кредит: <strong>1,800₽</strong><br>
+                                    • «Деньги в всем»: <strong>1,800₽</strong><br>
+                                    • Кредитная карта: <strong>450₽</strong>
+                                </div>
+                            </div>
+
+                            <!-- Карточные продукты -->
+                            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%); padding: 8px; border-radius: 8px; border-left: 3px solid #8a2be2; backdrop-filter: blur(8px); border: 1px solid rgba(138, 43, 226, 0.2); box-shadow: 0 2px 8px rgba(138, 43, 226, 0.15);">
+                                <h6 style="margin: 0 0 4px 0; color: #7c3aed; font-size: 0.8rem; font-weight: 600;">💳 Карточные продукты</h6>
+                                <div style="font-size: 0.7rem; line-height: 1.2; color: #495057;">
+                                    Карта к сбер. дебет. счету<br>с активацией: <strong>255₽</strong>
+                                </div>
+                            </div>
+
+                            <!-- Депозитные продукты -->
+                            <div style="background: linear-gradient(135deg, rgba(32, 201, 151, 0.1) 0%, rgba(52, 211, 153, 0.05) 100%); padding: 8px; border-radius: 8px; border-left: 3px solid #20c997; backdrop-filter: blur(8px); border: 1px solid rgba(32, 201, 151, 0.2); box-shadow: 0 2px 8px rgba(32, 201, 151, 0.15);">
+                                <h6 style="margin: 0 0 4px 0; color: #0f766e; font-size: 0.8rem; font-weight: 600;">📈 Депозитные продукты</h6>
+                                <div style="font-size: 0.7rem; line-height: 1.2; color: #495057;">
+                                    Вклад: <strong>50₽</strong><br>
+                                    <em style="color: #6b7280;">(с 01.04.2025 г. по 30.09.2025 г., далее 0 руб.)</em>
+                                </div>
+                            </div>
+
+                            <!-- Специальные предложения -->
+                            <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%); padding: 8px; border-radius: 8px; border-left: 3px solid #fbbf24; backdrop-filter: blur(8px); border: 1px solid rgba(251, 191, 36, 0.2); box-shadow: 0 2px 8px rgba(251, 191, 36, 0.15);">
+                                <h6 style="margin: 0 0 4px 0; color: #d97706; font-size: 0.8rem; font-weight: 600;">⭐ Специальные</h6>
+                                <div style="font-size: 0.7rem; line-height: 1.2; color: #495057;">
+                                    Первая продажа: <strong>500₽</strong><br>
+                                    <em style="color: #6b7280;">(выплачивается единоразово)</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Особенности -->
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%); border-left: 4px solid #3b82f6; padding: 10px; border-radius: 0 12px 12px 0; backdrop-filter: blur(8px); border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                        <h6 style="margin: 0 0 6px 0; color: #1d4ed8; font-size: 0.85rem; font-weight: 600;">💡 НЕ обнуляются</h6>
+                        <p style="margin: 0; font-size: 0.75rem; color: #4a5568; line-height: 1.3;">
+                            В отличие от КПИ, банковские бонусы НЕ зависят от выручки ОПС (даже при < 80%)
+                        </p>
                     </div>
                 </div>
             </div>
