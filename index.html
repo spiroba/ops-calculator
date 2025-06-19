@@ -235,11 +235,46 @@
                  margin-bottom: 8px;
              }
              
-             .summary-amount {
+                          .summary-amount {
                  font-size: 1.6rem;
                  font-weight: 700;
              }
-         }
+             
+             /* Специальные стили для result-item на мобильных */
+             .result-item {
+                 padding: 10px 0;
+                 gap: 8px;
+                 align-items: flex-start; /* Выравнивание по верху для длинного текста */
+             }
+             
+             .result-item span:first-child {
+                 padding-right: 8px;
+                 font-size: 0.9rem;
+                 line-height: 1.2;
+             }
+             
+             .result-item span:last-child {
+                 font-size: 0.9rem;
+                 min-width: 70px;
+                 font-weight: 700;
+             }
+             
+             .result-item:last-child {
+                 padding: 12px;
+                 margin-top: 12px;
+             }
+             
+             .result-item:last-child span:first-child {
+                 font-size: 1rem;
+                 font-weight: 700;
+             }
+             
+             .result-item:last-child span:last-child {
+                 font-size: 1.1rem;
+                 font-weight: 700;
+                 min-width: 90px;
+             }
+          }
 
 
 
@@ -481,6 +516,22 @@
             padding: 12px 0;
             border-bottom: 1px solid rgba(25, 40, 220, 0.2);
             color: #2B2D34;
+            gap: 10px; /* Минимальное расстояние между текстом и суммой */
+        }
+        
+        .result-item span:first-child {
+            flex: 1;
+            padding-right: 10px; /* Отступ между текстом и суммой */
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
+        
+        .result-item span:last-child {
+            flex-shrink: 0; /* Сумма не сжимается */
+            white-space: nowrap; /* Сумма с рублем остается на одной строке */
+            font-weight: 600;
+            text-align: right;
+            min-width: 80px; /* Минимальная ширина для суммы */
         }
 
         .result-item:last-child {
