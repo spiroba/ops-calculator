@@ -3325,12 +3325,12 @@
                 // Пытаемся загрузить внешний файл, если не получается - используем встроенный
                 const img = new Image();
                 img.onload = function() {
-                    qrContainer.innerHTML = '<img src="qr-code.png" alt="QR Code" style="width: 80px; height: 80px; border-radius: 8px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">';
+                    qrContainer.innerHTML = '<img src="qr-code.png" alt="QR Code" style="width: 96px; height: 96px; border-radius: 8px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">';
                     console.log('📱 Кастомный QR-код загружен из файла');
                 };
                 img.onerror = function() {
                     // Fallback на онлайн API с синим цветом
-                    qrContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://spiroba.github.io/ops-calculator/&ecc=M&color=1a237e&bgcolor=ffffff" alt="QR Code" style="width: 80px; height: 80px; border-radius: 8px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">';
+                    qrContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=96x96&data=https://spiroba.github.io/ops-calculator/&ecc=M&color=1a237e&bgcolor=ffffff" alt="QR Code" style="width: 96px; height: 96px; border-radius: 8px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">';
                     console.log('📱 QR-код загружен через API (fallback)');
                 };
                 img.src = 'qr-code.png';
