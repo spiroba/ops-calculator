@@ -27,8 +27,8 @@ POSITIONS_CONFIG = {
         "name": "НОПС без операторов (сам выполняет операции)",
         "emoji": "👨‍💼",
         "operations": [1, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25],
-        "kpi": ["revenue", "csi", "online_rpo", "co1_co2"],
-        "teamCoefficients": [],  # КПИ система вместо коэффициентов
+        "kpi": [],  # У НОПС без операторов НЕТ КПИ
+        "teamCoefficients": ["service", "speed_reception", "speed_delivery", "efficiency"],  # Все коэффициенты вместо КПИ
         "hasTeamBonus": False
     },
     "nops_management": {
@@ -109,12 +109,6 @@ KPI_WEIGHTS = {
         "revenue": 0.30,      # 30% от общей суммы КПИ
         "csi": 0.40,          # 40% от общей суммы КПИ  
         "online_rpo": 0.30    # 30% от общей суммы КПИ
-    },
-    "nops_operational": {
-        "revenue": 0.30,      # 30% от общей суммы КПИ
-        "csi": 0.40,          # 40% от общей суммы КПИ
-        "online_rpo": 0.15,   # 15% от общей суммы КПИ
-        "co1_co2": 0.15       # 15% от общей суммы КПИ
     },
     "nops_management": {
         "revenue": 0.30,      # 30% от общей суммы КПИ
